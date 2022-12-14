@@ -1,12 +1,11 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+ClapTrap::ClapTrap(void){}
+
+ClapTrap::ClapTrap(std::string name) : _name(name), _attackDamage(10), _energyPoints(10), _hitPoints(10)
 {
     std::cout << "Constructor called" << std::endl;
-    _attackDamage = 10;
-    _energyPoints = 10;
-    _hitPoints = 10;
 }
 
 ClapTrap::~ClapTrap(){std::cout << "Destructor called" << std::endl;}
@@ -29,18 +28,28 @@ ClapTrap & ClapTrap::operator=(const ClapTrap & ref)
 
 void ClapTrap::attack(const std::string& target)
 {
-    std::cout << _name << " attacks " << target << " causing " 
+	if (_energyPoints <= 0 || _hitPoints <= 0)
+	{
+	std::cout << "not enough energy or hitpoints to attack..." << std::endl;
+		return ;
+	}
+    std::cout << _name << " attacks " << target << " causing "
     << _attackDamage << " points of damage!" << std::endl;
+	_energyPoints--;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
     _hitPoints -= amount;
-
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+	if (_energyPoints <= 0 || _hitPoints <= 0)
+	{
+		std::cout << "not enough energy or hitpoints to repaired..." << std::endl;
+		return ;
+	}
     _hitPoints += amount;
     _energyPoints--;
 }

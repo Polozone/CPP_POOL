@@ -6,7 +6,7 @@
 #include <iostream>
 
 class ClapTrap {
-    
+
 public:
 
     ClapTrap(void);
@@ -23,9 +23,9 @@ public:
 private:
 
     std::string _name;
-    int         _hitPoints;
-    int         _energyPoints;
     int         _attackDamage;
+    int         _energyPoints;
+    int         _hitPoints;
 
 };
 

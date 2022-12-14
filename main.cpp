@@ -6,6 +6,12 @@ int main()
 {
     ClapTrap michel("Michel");
     ClapTrap didier(michel);
-    michel.attack("Didier");
+	int i = 0;
+	while (i < 13)
+	{
+    	michel.attack("Didier");
+		i++;
+	}
+	std::cout << std::endl;
     return 0;
 }
